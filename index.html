@@ -1,8 +1,46 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insertion de flux</title>
 </head>
-  <body>
-    <h1> Bonjour GitHub :) !</h1>
-  </body>
-  
+<body>
+    <h1>Flux de données</h1>
+    <div id="data-container">
+        <!-- Les données du flux seront insérées ici -->
+    </div>
+
+    <script>
+        // Exemple d'URL de flux (remplace par l'URL réelle de ton flux)
+        const fluxURL = 'https://jsonplaceholder.typicode.com/posts';
+
+        async function fetchAndDisplayData() {
+            try {
+                const response = await fetch(fluxURL);
+                if (!response.ok) {
+                    throw new Error(`Erreur : ${response.status}`);
+                }
+
+                const data = await response.json();
+                const container = document.getElementById('data-container');
+
+                // Ajouter les données dans la page
+                data.slice(0, 5).forEach(item => { // Limite à 5 articles pour l'exemple
+                    const article = document.createElement('div');
+                    article.innerHTML = `
+                        <h2>${item.title}</h2>
+                        <p>${item.body}</p>
+                    `;
+                    container.appendChild(article);
+                });
+            } catch (error) {
+                console.error('Erreur lors du chargement du flux :', error);
+            }
+        }
+
+        // Charger les données lors du chargement de la page
+        fetchAndDisplayData();
+    </script>
+</body>
 </html>
