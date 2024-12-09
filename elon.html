@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flux Twitter</title>
+</head>
+<body>
+    <h1>Flux Twitter</h1>
+    <!-- Conteneur pour le flux -->
+    <div id="twitter-feed">
+        <!-- Le widget Twitter sera inséré ici -->
+    </div>
+
+    <!-- Script officiel Twitter -->
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    
+    <script>
+        // Exemple d'intégration avec une URL de profil ou un hashtag
+        const twitterFeed = document.getElementById('twitter-feed');
+        
+        // Création d'un widget Twitter pour un profil ou hashtag spécifique
+        const profile = "elonmusk"; // Remplace par le compte ou hashtag souhaité
+        twitterFeed.innerHTML = `
+            <a 
+                class="twitter-timeline"
+                href="https://twitter.com/${profile}?ref_src=twsrc%5Etfw"
+                data-width="600"
+                data-height="400">
+                Tweets by ${profile}
+            </a>
+        `;
+    </script>
+</body>
+</html>
